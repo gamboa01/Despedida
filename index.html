@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Jenifer</title>
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --bg-soft: #17171c;
+      --card: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.10);
+      --text: #f4f1ea;
+      --muted: #c9c2b8;
+      --soft: #a9a195;
+      --accent: #e6d4b7;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.08), transparent 28%),
+        radial-gradient(circle at bottom, rgba(255,255,255,0.05), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 24px 0;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 24px 0 36px;
+    }
+
+    .hero-card {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-left {
+      padding: 56px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.9rem);
+      line-height: 1.05;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .hero-text {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin-top: 28px;
+      max-width: 560px;
+    }
+
+    .quote-box {
+      margin-top: 38px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(255,255,255,0.18);
+      color: var(--soft);
+      font-size: 0.98rem;
+      max-width: 420px;
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 560px;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,15,18,0.95), rgba(15,15,18,0.25), rgba(15,15,18,0.05));
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 2;
+    }
+
+    .hero-caption small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-caption p {
+      margin: 0;
+      color: #e6dfd5;
+      max-width: 360px;
+      font-size: 0.95rem;
+    }
+
+    .scroll-note {
+      text-align: center;
+      color: var(--soft);
+      font-size: 0.88rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 12px 0 10px;
+      font-size: 1.55rem;
+      font-weight: 600;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+    }
+
+    .section-title .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.95rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    .section-title p {
+      max-width: 640px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    .memories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .memory-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .memory-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .memory-content {
+      padding: 18px 18px 20px;
+    }
+
+    .memory-content h4 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .memory-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .farewell-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .letter p {
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-size: 1.07rem;
+      color: #eee8de;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .list-clean {
+      margin: 16px 0 0;
+      padding-left: 18px;
+    }
+
+    .closing {
+      font-size: 2rem;
+      line-height: 1.35;
+      margin: 10px 0 0;
+    }
+
+    .timeline {
+      margin-top: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: start;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .timeline-item span {
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+
+    .timeline-item h4 {
+      margin: 0 0 6px;
+      font-size: 1.15rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--soft);
+      padding: 30px 0 40px;
+      font-size: 0.95rem;
+    }
+
+    .music-note {
+      margin-top: 14px;
+      color: var(--soft);
+      font-size: 0.93rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-card,
+      .farewell-grid,
+      .grid-3,
+      .memories {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        min-height: 380px;
+        order: -1;
+      }
+
+      .hero-left {
+        padding: 34px 24px 38px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 20px), var(--max));
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 12px;
+      }
+
+      .hero-right {
+        min-height: 320px;
+      }
+
+      .memory-card img {
+        height: 260px;
+      }
+
+      .card, .memory-content {
+        padding: 18px;
+      }
+
+      .closing {
+        font-size: 1.65rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <section class="hero-card">
+        <div class="hero-left">
+          <div class="eyebrow">Para Jenifer</div>
+          <h1>Hay personas que no se olvidan,<br>solo se guardan con amor.</h1>
+          <p class="hero-text">
+            Este espacio no busca cambiar nada. Solo despedirme bien, con respeto,
+            con verdad y con el cariño que siempre tendrá lo que vivimos.
+          </p>
+          <div class="quote-box">
+            A veces el cierre más sincero no es quedarse, sino agradecer, soltar y desear paz.
+          </div>
+          <div class="pill">Un último mensaje, desde el corazón</div>
+        </div>
+
+        <div class="hero-right">
+          <img src="fotos/portada.jpg" alt="Foto principal de ustedes" />
+          <div class="hero-overlay"></div>
+          <div class="hero-caption">
+            <small>Nuestro capítulo</small>
+          </div>
+        </div>
+      </section>
+      <div class="scroll-note">Desliza para continuar</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="grid-3">
+          <article class="card">
+            <div class="eyebrow">Lo bueno</div>
+            <h3>Gracias por lo vivido</h3>
+            <p>Porque hubo amor, ilusión, planes, compañía y momentos que dejaron huella.</p>
+          </article>
+
+          <article class="card">
+            <div class="eyebrow">Lo real</div>
+            <h3>Sin reproches</h3>
+            <p>Este mensaje no lo escribo desde el enojo, sino desde querer cerrar con bien nuestro capítulo.</p>
+          </article>
+
+          <article class="card">
+            <div class="eyebrow">Lo que queda</div>
+            <h3>Paz para ambos</h3>
+            <p>Que el amor que existió (existe) no se convierta en una herida, sino en un buen recuerdo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Recuerdos</div>
+          <h2>Lo que siempre voy a agradecer</h2>
+        </div>
+
+
+
+
+        <div class="memories">
+          <article class="memory-card">
+            <img src="fotos/recuerdo-1.jpg" alt="Recuerdo 1" />
+            <div class="memory-content">
+              <h4>Primeras Platicas</h4>
+              <p>Y aunque no te guste la foto, estas fueron las primeras platicas fuera de tu casa, esas graditas, ese espacio tan nuestro.</p>
+            </div>
+          </article>
+
+          <article class="memory-card">
+            <img src="fotos/recuerdo-2.jpg" alt="Recuerdo 2" />
+            <div class="memory-content">
+              <h4>Nuestro Primer Año</h4>
+              <p>A pesar de todo lo vivido, cumplimos un año juntos y para mí fue el mejor año, disfrutando de nuestro amor día con día.</p>
+            </div>
+          </article>
+
+          <article class="memory-card">
+            <img src="fotos/recuerdo-3.jpg" alt="Recuerdo 3" />
+            <div class="memory-content">
+              <h4>Un capítulo inolvidable</h4>
+              <p>Nuestra mejor combinación, el mejor outfit y que recuerda las tantas veces que sin querer terminamos combinando.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Nuestra historia</div>
+          <h2>Un pequeño recorrido</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <span>Inicio</span>
+            <div>
+              <h4>El SI y NO</h4>
+              <p>Es increíble como recuerdo la vez que me dijiste que NO para posteriormente decirme que SÍ, el momento que terminé siendo muy feliz.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span>Planes</span>
+            <div>
+              <h4>Vida Juntos</h4>
+              <p>Lo tanto que planeamos una vida juntos, esa casita, ese lugar que queríamos para nosotros.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span>Cierre</span>
+            <div>
+              <h4>Mis últimas palabras</h4>
+              <p>Aunque hoy ese camino ya no sea el nuestro, no por eso deja de haber sido valioso.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="farewell-grid">
+          <article class="card letter">
+            <div class="eyebrow">Mi despedida</div>
+            <h2 style="margin-top:0; font-size:2.2rem; line-height:1.1; font-weight:600;">Lo que quería decirte</h2>
+
+            <p>
+              Jenifer, que extraño es decirte por tu nombre, escribo esto no para cambiar tu decisión, ni para detener lo que ya
+              entendimos que debía pasar. Lo escribo porque fuiste una parte muy importante
+              de mi vida, y no quería que algo tan bonito terminara sin decirte algo bonito, con
+              confusión o palabras sin sentimiento.
+            </p>
+
+            <p>
+              Gracias por cada momento bonito, por cada conversación, por cada ilusión y por
+              todo lo que construimos desde el corazón. Hubo cosas que soñamos de verdad,
+              cosas que imaginamos como un futuro, y una vida juntos, me duele que no tendré a mi hija de blanquita de ojos bonitos.
+              Blanquita como su mamá y las pestañas de su papá, como tantas veces lo dijimos.
+            </p>
+
+            <p>
+              Me quedo con lo bueno. Con lo sincero. Con lo que sí fue amor, cuidado, apoyo,
+              compañía y esperanza. También acepto que hubo dolor, desgaste y circunstancias
+              que nos terminaron afectando más de lo que queríamos. Esto no es para culpar a nadie, sino para despedirme bien.
+            </p>
+
+            <p>
+              Deseo de corazón que encuentres paz, descanso, estabilidad y alegría. Deseo que
+              la vida te de todo lo bonito y que todo lo que venga para ti te haga bien. Y si algún
+              día piensas en mí, o en nosotros, ojalá sea desde la ternura y no desde la colera o enojo.
+            </p>
+
+                        <p>
+              Quiero recordarte que mi promesa de estar para ti sigue presente, llegarán personas a tu vida,
+              conoceras a alguien que te de paz y es mi mejor deseo para ti, perdoname por haberte fallado, 
+              solamente quiero recordarte que mi amor por ti no es algo que se borré tan fácilmente, hasta pronto, 
+              si Dios lo permite nos volveremos a cruzar y sino, que tengas una vida llena de bendiciones y éxitos. 
+            </p>
+
+            <p>
+              Gracias por haber existido en mi historia. Siempre voy a guardar este capítulo
+              con cariño y mucho amor.
+            </p>
+          </article>
+
+          <div class="side-stack">
+            <article class="card">
+              <div class="eyebrow">Lo que aprendí</div>
+              <h3>Lo que me deja esta historia</h3>
+              <ul class="list-clean">
+                <li>Aprendí que amar también es cuidar cómo nos despedimos.</li>
+                <li>Aprendí que algunos sueños no se borran, pero sí se sueltan.</li>
+                <li>Aprendí que agradecer también es una forma de cerrar.</li>
+                <li>Aprendí que lo que es amar con toda el alma.</li>
+                <li>Aprendí a escuchar.</li>
+                <li>Aprendí que es importante el afecto.</li>
+                <li>Aprendí que juntos somos mas fuertes.</li>
+
+              </ul>
+            </article>
+<article class="card">
+  <div class="eyebrow">Un último te amo</div>
+
+  <p style="margin-top:14px; color:#e9e3d9; font-size:1.05rem;">
+    Antes de cerrar esta historia, quiero decir una cosa más.
+  </p>
+
+  <p style="margin-top:10px; color:#e9e3d9; font-size:1.05rem;">
+    Gracias por todo lo que fuimos, por lo que construimos y por lo que
+    soñamos juntos.
+  </p>
+
+  <p style="margin-top:18px; font-size:1.4rem; color:#f4efe6;">
+    Te amo tanto y te amaré.
+  </p>
+</article>
+            <article class="card">
+              <div class="eyebrow">Última línea</div>
+              <p class="closing">
+                Gracias por todo, Jenifer.<br>
+                Te dejo ir con amor.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="eyebrow">Última Canción</div>
+              <h3>Sé lo mucho que te gusta la banda y te dejo está canción...</h3>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/31REg67eoHJSvMLUcEmGNj?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Hecho con respeto, memoria y cariño, por Guillermo Gamboa, quién te amo con toda el alma.
+  </footer>
+</body>
+</html>
